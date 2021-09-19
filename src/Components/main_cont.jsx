@@ -31,7 +31,7 @@ class MainCont extends Component {
         page: 1,
         searchPage: 1
      }
-    apiUrl = "";
+    apiUrl = "http://127.0.0.1:8000";
     getSearch = (data)=>{
         this.setState({
             searchData: data,
