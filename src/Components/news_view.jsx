@@ -8,7 +8,7 @@ class View_News extends Component {
     state = { 
         items: []
      }
-    apiUrl = "http://127.0.0.1:8000";
+    apiUrl = "";
     componentDidMount(){
         const porductId = this.props.match.params.id;
         axios.defaults.baseURL = `${this.apiUrl}/api/`;

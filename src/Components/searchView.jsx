@@ -19,7 +19,7 @@ class SearchView extends Component {
             page: page,
         })
         console.log(page);
-        axios.defaults.baseURL = `http://127.0.0.1:8000/api/`;
+        axios.defaults.baseURL = `/api/`;
         axios.get(`search_article?searchData=${this.props.articleList}&page=${page}`)
         .then(res=>{
             this.setState({
