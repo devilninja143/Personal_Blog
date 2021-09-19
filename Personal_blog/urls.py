@@ -25,6 +25,5 @@ urlpatterns = [
     path("api/", include("blog.urls")),
     path('api-auth/', include('rest_framework.urls')),
     re_path(".*", TemplateView.as_view(template_name="index.html")),
-    re_path(r"^media/(?P<path>.*)$", serve, {'document_root': settings.MEDIA_ROOT})
-]
-# +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # re_path(r"^media/(?P<path>.*)$", serve, {'document_root': settings.MEDIA_ROOT})
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

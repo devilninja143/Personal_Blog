@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'whitenoise',
     "corsheaders",
+    "django_heroku"
 ]
 
 MIDDLEWARE = [
