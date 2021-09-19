@@ -141,6 +141,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-import django_heroku
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+# import django_heroku
+# # Activate Django-Heroku.
+# django_heroku.settings(locals())
