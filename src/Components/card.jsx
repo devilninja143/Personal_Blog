@@ -25,7 +25,7 @@ class Card extends Component {
                 <Link to={"article_view/"+this.props.articleList.id} className="col-12 col-md-6 col-lg-4 text-decoration-none text-dark " onClick={this.handelLocation}>
                         <div className="card mb-3">
                             <div className="card-img-top d-flex" style={{maxHeight: "200px", overflow: 'hidden'}}>
-                                <img src={this.props.hostName+this.props.articleList.img} className="" alt="..." style={{margin: "auto"}} />
+                                <img src={this.props.articleList.img} className="" alt="..." style={{margin: "auto"}} />
                             </div>
                             <div className="card-body">
                                 <h5 className="card-title">{this.props.articleList.title}</h5>

@@ -14,6 +14,12 @@ class Article(models.Model):
     catagories = models.ForeignKey(Article_catagories, on_delete=models.CASCADE)
     desc = models.TextField()
     date = models.DateField(auto_created=True, auto_now_add=True)
+    def get_image_url(self):
+        img = self.profile_img
+        if img:
+            return img.image.url
+        else:
+            return None
 
 class News(models.Model):
     img = models.ImageField(upload_to="Img/News")
@@ -21,3 +27,9 @@ class News(models.Model):
     desc = models.TextField()
     date = models.DateField(auto_created=True, auto_now_add=True)
     view_count = models.IntegerField(default=0)
+    def get_image_url(self):
+        img = self.profile_img
+        if img:
+            return img.image.url
+        else:
+            return None

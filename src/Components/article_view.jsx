@@ -10,13 +10,13 @@ class View extends Component {
         items: [],
         items2: []
      }
-     apiUrl = ``
+     apiUrl = ''
      componentDidMount(){
         const porductId = this.props.match.params.id;
-        axios.defaults.baseURL = `${this.apiUrl}/api`
+        // axios.defaults.baseURL = `/api`
         axios({
             method: "GET",
-            url: `/article_data/${porductId}/`
+            url: `/api/article_data/${porductId}/`
          }).then(
              res=>{
                  this.setState({
