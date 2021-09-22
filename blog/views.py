@@ -16,7 +16,7 @@ from .serializer import *
 # Create your views here.
 @api_view(["GET"])
 def article_api(request):
-    article = Article.objects.all()
+    article = Article.objects.all().order_by("-date")
     serializer = ArticleSerializer(article, many=True)
     return Response(serializer.data, status=200)
 
