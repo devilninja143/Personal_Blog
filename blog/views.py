@@ -26,9 +26,9 @@ def filterd_article_api(request):
         page_no = request.GET["page"]
         catagory = request.GET["catagories"]
         if catagory != "All":
-            article = Article.objects.filter(catagories=catagory).order_by("date")
+            article = Article.objects.filter(catagories=catagory).order_by("-date")
         else:
-            article = Article.objects.all().order_by("date")
+            article = Article.objects.all().order_by("-date")
         all_catagories = Article_catagories.objects.all()
         serializer2 = Article_catagoriesSerializer(all_catagories, many=True)
         paginate = Paginator(article, 6)
@@ -41,8 +41,8 @@ def filterd_article_api(request):
 @api_view(["GET"])
 def news_api(request):
     page = request.GET["page"]
-    news = News.objects.all().order_by("date")
-    news2 = News.objects.all().order_by("date")
+    news = News.objects.all().order_by("-date")
+    news2 = News.objects.all().order_by("-date")
     paginator = Paginator(news, 6)
     paginated = paginator.page(page)
     page_number = paginator.num_pages
@@ -62,12 +62,12 @@ def search_api(request):
         except MultiValueDictKeyError:
             page2 = 1
         searchData = request.GET["searchData"]
-        article = Article.objects.filter(title__icontains=searchData).order_by("date")
+        article = Article.objects.filter(title__icontains=searchData).order_by("-date")
         paginator = Paginator(article, 6)
         paginated = paginator.page(page)
         page_number1 = paginator.num_pages
         serializer = ArticleSerializer(paginated, many=True)
-        news = News.objects.filter(title__icontains=searchData).order_by("date")
+        news = News.objects.filter(title__icontains=searchData).order_by("-date")
         paginator2 = Paginator(news, 6)
         paginated2 = paginator2.page(page2)
         page_number2 = paginator2.num_pages
@@ -87,7 +87,7 @@ def news_data(request, id):
 @api_view(["GET"])
 def article_data(request, id):
     article = Article.objects.get(id=id)
-    related_article = Article.objects.filter(catagories=article.catagories).exclude(id=id).order_by("date")
+    related_article = Article.objects.filter(catagories=article.catagories).exclude(id=id).order_by("-date")
     serializer = ArticleSerializer(article, many=False)
     serializer2 = ArticleSerializer(related_article, many=True)
     return Response({ "article": serializer.data, "article2": serializer2.data }, status=200)
